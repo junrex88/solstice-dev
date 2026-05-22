@@ -1,0 +1,442 @@
+// ==========================================
+// VARIABLES & DESIGN TOKENS
+// ==========================================
+$color-primary: #C8820B;
+$color-primary-hover: #e29208;
+$color-text-main: #786968;
+$color-text-dark: #2a2721;
+$color-text-muted: #72635D;
+$color-white: #ffffff;
+$color-bg-light: #F5F5F5;
+
+$font-inter: "Inter", sans-serif;
+$font-lato: "Lato", sans-serif;
+
+// BREAKPOINTS
+$breakpoint-tablet: 1024px;
+$breakpoint-mobile: 767px;
+
+// ==========================================
+// BASE STYLES
+// ==========================================
+h1, h2, h3, h4, h5, h6, span {
+    font-family: $font-inter;
+    color: $color-text-main;
+}
+
+p, em, i, b, label {
+    font-family: $font-inter;
+    color: $color-text-main;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+a {
+    font-family: $font-inter;
+    color: $color-primary;
+    font-size: 16px;
+    line-height: 24px;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: $color-primary-hover;
+    }
+}
+
+.container {
+    max-width: 1201px;
+    margin: 0 auto;
+}
+
+// ==========================================
+// HEADER COMPONENT
+// ==========================================
+header {
+    height: 800px;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+        height: unset;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 34.05% 1fr;
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+
+        @media screen and (max-width: $breakpoint-tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media screen and (max-width: $breakpoint-mobile) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .logo-sec {
+        background-image: url(../images/sunrise-img.jpg);
+        background-position: center;
+        background-size: cover;
+        height: 100%;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        min-height: 513px;
+
+        h1 {
+            display: block;
+            background-image: url(../images/solstice-logo.png);
+            background-position: center;
+            width: 100%;
+            height: 196px;
+            text-indent: -9999px;
+            max-width: 342px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        height: 100%;
+        object-position: center;
+
+        &:nth-child(3) {
+            grid-column: 2;
+            grid-row: 1 / span 2;
+            height: 800px;
+
+            @media screen and (max-width: $breakpoint-mobile) {
+                grid-column: unset;
+                grid-row: unset;
+                height: auto;
+            }
+        }
+    }
+}
+
+// ==========================================
+// CONTENT SECTIONS
+// ==========================================
+.text-center {
+    padding: 100px 20px;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+        padding: 50px 20px;
+    }
+
+    h2 {
+        font-size: 26px;
+        font-weight: bold;
+        line-height: 32px;
+        text-align: center;
+        max-width: 575px;
+        margin: 0 auto 50px;
+
+        span {
+            text-transform: uppercase;
+        }
+    }
+
+    p {
+        max-width: 823px;
+        font-size: 16px;
+        line-height: 30px;
+        margin: 0 auto;
+    }
+}
+
+// THREE-COLUMN SECTION
+.threecol-sec {
+    padding: 0 20px 80px;
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+
+        @media screen and (max-width: $breakpoint-tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media screen and (max-width: $breakpoint-mobile) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .col {
+        background-color: $color-bg-light;
+
+        .image {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            flex-shrink: 0;
+            overflow: hidden;
+
+            h3 {
+                position: absolute;
+                top: 1rem;
+                left: 0;
+                background-color: $color-text-dark;
+                color: $color-white;
+                font-family: $font-lato;
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: .18em;
+                text-transform: uppercase;
+                padding: .45rem 1.1rem;
+                z-index: 2;
+
+                span {
+                    display: block;
+                    font-size: 16px;
+                }
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        // Hover Effect
+        &:hover img {
+            transform: scale(1.04);
+        }
+
+        .details {
+            padding: 20px 20px 40px;
+
+            span {
+                font-size: 14px;
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            a {
+                margin-top: 20px;
+                display: inline-block;
+            }
+        }
+    }
+}
+
+// VIDEO SECTION
+.video-sec {
+    .container {
+        max-width: 100%;
+        overflow: hidden;
+        height: 721px;
+
+        @media screen and (max-width: $breakpoint-mobile) {
+            height: 500px;
+        }
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+}
+
+// CALL TO ACTION (CTA)
+.text-center-cta {
+    padding: 100px 20px;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+        padding: 50px 20px;
+    }
+
+    h4 {
+        font-size: 26px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+        line-height: 30px;
+        max-width: 543px;
+        margin: 0 auto 20px;
+    }
+
+    a.btn {
+        display: block;
+        font-family: $font-lato;
+        background-color: $color-primary;
+        padding: 9.5px 20px;
+        font-size: 13px;
+        font-weight: 500;
+        color: $color-white;
+        line-height: 17px;
+        text-transform: uppercase;
+        text-decoration: none;
+        text-align: center;
+        max-width: 187px;
+        margin: 0 auto;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: $color-primary-hover;
+        }
+    }
+}
+
+// ==========================================
+// CONTACT FORM COMPONENT
+// ==========================================
+.contact-form {
+    background-color: $color-primary;
+    padding: 80px 20px;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+        padding: 50px 20px;
+    }
+
+    h4 {
+        font-size: 26px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: $color-white;
+    }
+
+    form {
+        background-color: $color-white;
+        padding: 60px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 650px;
+
+        @media screen and (max-width: $breakpoint-mobile) {
+            grid-template-columns: 1fr;
+            padding: 40px;
+        }
+
+        .enquiry, .message {
+            grid-column: 1 / span 2;
+
+            @media screen and (max-width: $breakpoint-mobile) {
+                grid-column: unset;
+            }
+        }
+
+        label {
+            display: block;
+            color: $color-text-main;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            display: block;
+            width: 100%;
+            border: 1px solid $color-bg-light;
+            border-radius: 5px;
+            color: $color-text-main;
+            padding: 10px 20px;
+            box-sizing: border-box;
+
+            &:focus-visible {
+                outline-color: $color-primary;
+            }
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        button.submit {
+            display: block;
+            max-width: 220px;
+            padding: 10px 20px;
+            border: 1px solid $color-bg-light;
+            border-radius: 0;
+            color: $color-white;
+            cursor: pointer;
+            background-color: $color-primary;
+            text-transform: uppercase;
+            grid-column: 1 / span 2;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: $color-primary-hover;
+            }
+
+            @media screen and (max-width: $breakpoint-mobile) {
+                grid-column: unset;
+            }
+        }
+    }
+}
+
+// ==========================================
+// GALLERY COMPONENT
+// ==========================================
+.image-gallery {
+    padding: 80px 20px;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+        padding: 50px 20px;
+    }
+
+    ul {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        @media screen and (max-width: $breakpoint-mobile) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+// ==========================================
+// FOOTER COMPONENT
+// ==========================================
+footer {
+    padding: 0 20px 100px;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+        padding: 0 20px 50px;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto 30px;
+        max-width: 270px;
+    }
+
+    p {
+        font-size: 10px;
+        line-height: 17px;
+        text-align: center;
+        max-width: 990px;
+        margin: 0 auto 20px;
+
+        a {
+            color: $color-text-muted;
+            font-size: 10px;
+        }
+
+        img {
+            display: inline;
+            margin: 0;
+            object-position: 0 4px;
+        }
+    }
+}
