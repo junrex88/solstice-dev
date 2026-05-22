@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS `solstice_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `solstice_db`;
+
+CREATE TABLE IF NOT EXISTS `submissions` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `enquiry` VARCHAR(100) NOT NULL,
+  `message` TEXT NOT NULL,
+  `created_at` DATETIME NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

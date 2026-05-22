@@ -71,19 +71,32 @@
     <section class="contact-form">
         <div class="container">
             <h4>Get In Touch</h4>
-            <form action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT_HERE" method="POST">
+            
+            <?php if (isset($_GET['status'])): ?>
+                <?php if ($_GET['status'] == 'success'): ?>
+                    <div class="alert alert-success" style="background: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+                        Thank you! Your message has been successfully sent and saved.
+                    </div>
+                <?php elseif ($_GET['status'] == 'error' && isset($_GET['msg'])): ?>
+                    <div class="alert alert-danger" style="background: #f8d7da; color: #721c24; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+                        Error: <?php echo htmlspecialchars($_GET['msg']); ?>
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
+
+            <form action="submit.php" method="POST">
                 <div class="fname">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                    <input type="text" id="name" name="name" placeholder="John Doe">
                 </div>
                 <div class="email">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    <input type="text" id="email" name="email" placeholder="john@example.com">
                 </div>
                 <div class="enquiry">
                     <label for="enquiry">Type Of Enquiry</label>
-                    <select name="enquiry" id="enquiry" required>
-                        <option value="" disabled selected>Select an option</option>
+                    <select name="enquiry" id="enquiry">
+                        <option value="" selected disabled>Select an option</option>
                         <option value="Enquiry1">Enquiry1</option>
                         <option value="Enquiry2">Enquiry2</option>
                         <option value="Enquiry3">Enquiry3</option>
@@ -91,7 +104,7 @@
                 </div>
                 <div class="message">
                     <label for="message">Message</label>
-                    <textarea name="message" id="message" required placeholder="How can we help you?"></textarea>
+                    <textarea name="message" id="message" placeholder="How can we help you?"></textarea>
                 </div>
                 <button type="submit" class="submit">Submit</button>
             </form>
